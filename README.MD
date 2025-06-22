@@ -37,6 +37,8 @@
 ## ⬇️ دریافت نسخه دمو
 نسخه دموی نرم‌افزار را می‌توانید از [صفحه انتشارات (releases)](https://github.com/IntellSoftAI/Image2Video/releases) دانلود کنید.
 
+## برنامه نویس: محمدعلی عباسپور
+[چگونه عکس را به فیلم تایم لپس تبدیل کنیم؟](https://intellsoft.ir/product/time-lapse-photo-to-video/)
 ---
 
 # 🎞️ Image2Video - Turn Images into Videos Effortlessly! 🚀
