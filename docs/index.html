@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.seo.title }}</title>
+    <meta name="description" content="{{ site.seo.description }}">
+    <meta name="keywords" content="{{ site.seo.keywords | join: ', ' }}">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>{{ site.title }}</h1>
+                <p>{{ site.description }}</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn primary-btn">دانلود نرم‌افزار</a>
+                    <a href="{{ site.github_repo }}" class="btn secondary-btn">مشاهده کد منبع</a>
+                </div>
+            </div>
+            <div class="header-image">
+                <img src="assets/screenshot.png" alt="نمای نرم‌افزار تبدیل تصاویر به تایم‌لیپس">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="features">
+            <h2>ویژگی‌های اصلی</h2>
+            <div class="features-grid">
+                {% for feature in site.features %}
+                <div class="feature-card">
+                    <div class="feature-icon">{{ feature.icon }}</div>
+                    <h3>{{ feature.title }}</h3>
+                    <p>{{ feature.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="applications">
+            <h2>کاربردهای نرم‌افزار</h2>
+            <div class="applications-container">
+                <ul class="applications-list">
+                    {% for application in site.applications %}
+                    <li>{{ application }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section id="benefits">
+            <h2>چرا این نرم‌افزار؟</h2>
+            <div class="benefits-container">
+                <div class="benefit">
+                    <h3>⏱️ صرفه‌جویی در زمان</h3>
+                    <p>تبدیل سریع صدها تصویر به ویدیو در چند دقیقه</p>
+                </div>
+                <div class="benefit">
+                    <h3>🎨 کیفیت حرفه‌ای</h3>
+                    <p>خروجی با کیفیت Full HD و 4K</p>
+                </div>
+                <div class="benefit">
+                    <h3>🧩 استفاده آسان</h3>
+                    <p>رابط کاربری ساده بدون نیاز به دانش فنی</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works">
+            <h2>نحوه کار با نرم‌افزار</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>انتخاب تصاویر</h3>
+                    <p>پوشه حاوی تصاویر خود را انتخاب کنید</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>تنظیمات ویدیو</h3>
+                    <p>سرعت، کیفیت و فرمت خروجی را مشخص کنید</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>افزودن موسیقی</h3>
+                    <p>فایل صوتی برای پس‌زمینه اضافه کنید (اختیاری)</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>تولید ویدیو</h3>
+                    <p>عملیات تبدیل را شروع و ویدیو نهایی را دریافت کنید</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formats">
+            <h2>فرمت‌های پشتیبانی شده</h2>
+            <div class="formats-container">
+                <div class="format-section">
+                    <h3>📷 فرمت‌های تصویر ورودی</h3>
+                    <div class="format-list">
+                        <span>JPG</span>
+                        <span>PNG</span>
+                        <span>BMP</span>
+                        <span>TIFF</span>
+                        <span>GIF</span>
+                    </div>
+                </div>
+                <div class="format-section">
+                    <h3>🎥 فرمت‌های ویدیوی خروجی</h3>
+                    <div class="format-list">
+                        <span>MP4</span>
+                        <span>AVI</span>
+                        <span>MOV</span>
+                        <span>WMV</span>
+                        <span>MKV</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download">
+            <h2>دانلود نرم‌افزار</h2>
+            <div class="download-section">
+                <div class="version-info">
+                    <p>نسخه فعلی: <strong>1.2.0</strong></p>
+                    <p>حجم: <strong>25MB</strong></p>
+                    <div class="system-requirements">
+                        <h3>نیازمندی‌های سیستم:</h3>
+                        <ul>
+                            <li>ویندوز 10 و بالاتر</li>
+                            <li>حداقل 4GB RAM</li>
+                            <li>1GB فضای خالی دیسک</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="download-options">
+                    <div class="download-buttons">
+                        <a href="#" class="btn download-btn">
+                            <span class="os-icon">🪟</span>
+                            نسخه ویندوز
+                        </a>
+                        <a href="#" class="btn download-btn">
+                            <span class="os-icon">🍎</span>
+                            نسخه مک‌اواس
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples">
+            <h2>نمونه‌های تایم‌لیپس</h2>
+            <div class="examples-container">
+                <div class="example">
+                    <div class="example-video">
+                        <div class="video-placeholder" style="background-image: url('assets/example1-thumb.jpg')">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>تایم‌لیپس طلوع آفتاب</h3>
+                </div>
+                <div class="example">
+                    <div class="example-video">
+                        <div class="video-placeholder" style="background-image: url('assets/example2-thumb.jpg')">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>رشد گیاهان</h3>
+                </div>
+                <div class="example">
+                    <div class="example-video">
+                        <div class="video-placeholder" style="background-image: url('assets/example3-thumb.jpg')">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>پروژه ساخت‌وساز</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>نرم‌افزار تبدیل تصاویر به ویدیو تایم‌لیپس</h3>
+                    <p>راه‌حل حرفه‌ای برای ساخت تایم‌لیپس‌های خیره‌کننده</p>
+                </div>
+                <div class="footer-links">
+                    <h4>لینک‌های مفید</h4>
+                    <ul>
+                        <li><a href="{{ site.github_repo }}">صفحه پروژه در GitHub</a></li>
+                        <li><a href="{{ site.author.url }}">وبسایت اینتل سافت</a></li>
+                        <li><a href="mailto:{{ site.author.email }}">پشتیبانی فنی</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>ارتباط با ما</h4>
+                    <p>ایمیل: <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+                    <p>وبسایت: <a href="{{ site.author.url }}">{{ site.author.url }}</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© {{ site.time | date: '%Y' }} توسعه داده شده توسط {{ site.author.name }}. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
