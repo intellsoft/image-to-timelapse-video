@@ -75,15 +75,11 @@
 
 ---
 
-## 🖼️ تصاویر برنامه
+## 🖼️ تصویر برنامه
 
 <div align="center">
 
-![Modern Image2Video Pro Interface](https://lh3.googleusercontent.com/d/1AjdMIuposntN5Ri8twfNW7-Lgr3-WjsA)
-
-![Advanced Image Gallery](https://lh3.googleusercontent.com/d/1TLK1_7ISMi_JmAagj9tdL3p8QdTP_GTw)
-
-![Complete Video Settings](https://lh3.googleusercontent.com/d/1VvfSOBZmom5IygQ549PuDh3l-rwvkMHe)
+![رابط کاربری Image2Video Pro](./image-to-timelapse-video.JPG)
 
 </div>
 
@@ -121,6 +117,14 @@
 - ⚡ Ultra-fast performance with dual caching
 - 💾 Auto-save settings
 - 📸 Supports JPG, PNG, GIF, BMP, WEBP
+
+### Application Screenshot
+
+<div align="center">
+
+![Modern Image2Video Pro Interface](./image-to-timelapse-video.JPG)
+
+</div>
 
 ### Download
 The latest version is available on the [Releases Page](https://github.com/IntellSoftAI/Image2Video/releases).
