@@ -3,441 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image2Video Pro - تبدیل تصاویر به ویدیو حرفه‌ای</title>
-    <meta name="description" content="نرم‌افزار تبدیل تصاویر به ویدیو با رابط کاربری مدرن و امکانات پیشرفته">
-    <meta name="keywords" content="تبدیل تصاویر به ویدیو, نرم‌افزار تایم‌لیپس, Image2Video Pro, تبدیل عکس به فیلم">
+    <title>Image2Video Pro | نرم افزار تبدیل عکس به فیلم تایم لپس — ساخت تایم لپس حرفه‌ای</title>
+    <meta name="description" content="Image2Video Pro؛ نرم افزار تبدیل عکس به ویدیو برای ساخت تایم لپس حرفه‌ای، ساخت اسلایدشو با کیفیت بالا و تبدیل تصاویر دوربین مداربسته به ویدیو با قدرت FFmpeg.">
+    <meta name="keywords" content="نرم افزار تبدیل عکس به فیلم تایم لپس, ساخت تایم لپس حرفه‌ای, نرم افزار تبدیل عکس به ویدیو, ساخت اسلایدشو با کیفیت بالا, تبدیل تصاویر دوربین مداربسته به ویدیو, تولید ویدیو با FFmpeg, نرم افزار ساخت ویدیو تایم لپس, تبدیل مجموعه تصاویر به ویدیو, نرم افزار تایم لپس ویندوز, نرم افزار رایگان تبدیل عکس به فیلم">
+    <meta name="author" content="محمدعلی عباس‌پور">
+    <meta property="og:title" content="Image2Video Pro | ساخت تایم لپس حرفه‌ای از تصاویر">
+    <meta property="og:description" content="نرم افزار تبدیل مجموعه تصاویر به ویدیو با رابط مدرن، سرعت بالا و خروجی باکیفیت">
+    <meta property="og:image" content="./image-to-timelapse-video.JPG">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://intellsoft.ir/product/time-lapse-photo-to-video/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎞️</text></svg>">
+
+    <!-- فونت وزیرمتن -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- آیکون‌ها -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- داده ساختاریافته سئو -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Image2Video Pro",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "MultimediaApplication",
+      "description": "نرم افزار تبدیل عکس به فیلم تایم لپس و ساخت اسلایدشو با کیفیت بالا با موتور FFmpeg",
+      "url": "https://intellsoft.ir/product/time-lapse-photo-to-video/",
+      "author": { "@type": "Person", "name": "محمدعلی عباس‌پور" },
+      "offers": { "@type": "Offer", "url": "https://intellsoft.ir/product/time-lapse-photo-to-video/" }
+    }
+    </script>
+
     <style>
-        /* استایل‌های پایه */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ========== متغیرها و پایه ========== */
+        :root{
+            --bg:#0d1117;
+            --bg-2:#10161d;
+            --surface:#161d26;
+            --surface-2:#1c2530;
+            --line:rgba(255,255,255,.08);
+            --accent:#fd6f14;
+            --accent-2:#ffa149;
+            --accent-soft:rgba(253,111,20,.12);
+            --text:#e8eef5;
+            --muted:#9aa7b4;
+            --radius:18px;
+            --shadow:0 20px 50px rgba(0,0,0,.45);
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Vazirmatn',Tahoma,sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            line-height:1.9;
+            overflow-x:hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        img{max-width:100%;display:block}
+        a{text-decoration:none;color:inherit}
+        .container{max-width:1140px;margin:0 auto;padding:0 22px}
+        section{padding:90px 0}
+
+        /* ========== ناوبری ========== */
+        .navbar{
+            position:fixed;top:0;right:0;left:0;z-index:1000;
+            background:rgba(13,17,23,.75);
+            backdrop-filter:blur(14px);
+            -webkit-backdrop-filter:blur(14px);
+            border-bottom:1px solid var(--line);
+            transition:background .3s;
         }
-        
-        /* هدر */
-        header {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: white;
-            padding: 80px 0 60px;
-            text-align: center;
+        .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+        .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem}
+        .logo i{color:var(--accent);font-size:1.5rem}
+        .logo span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+        .nav-links a{color:var(--muted);font-weight:500;font-size:.95rem;position:relative;transition:color .3s}
+        .nav-links a:hover{color:var(--text)}
+        .nav-links a::after{content:"";position:absolute;bottom:-6px;right:0;width:0;height:2px;background:var(--accent);transition:width .3s;border-radius:2px}
+        .nav-links a:hover::after{width:100%}
+        .nav-cta{background:var(--accent);color:#fff !important;padding:9px 20px;border-radius:10px;font-weight:700;transition:transform .3s,box-shadow .3s}
+        .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(253,111,20,.35)}
+        .nav-cta::after{display:none}
+        .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+        /* ========== هدر / هیرو ========== */
+        .hero{
+            padding:170px 0 90px;
+            background:
+                radial-gradient(900px 420px at 85% -10%, rgba(253,111,20,.16), transparent 60%),
+                radial-gradient(700px 380px at 10% 20%, rgba(255,161,73,.08), transparent 60%),
+                var(--bg);
+            position:relative;
         }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #fd6f14;
+        .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+        .badge{
+            display:inline-flex;align-items:center;gap:8px;
+            background:var(--accent-soft);color:var(--accent-2);
+            border:1px solid rgba(253,111,20,.35);
+            padding:7px 16px;border-radius:50px;font-size:.85rem;font-weight:700;margin-bottom:22px;
         }
-        
-        header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #ccc;
+        .hero h1{font-size:clamp(1.9rem,4.2vw,3.1rem);font-weight:900;line-height:1.5;margin-bottom:18px}
+        .hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .hero p.lead{color:var(--muted);font-size:1.08rem;max-width:560px;margin-bottom:30px}
+        .kw-link{color:var(--accent-2);font-weight:700;border-bottom:1px dashed rgba(255,161,73,.6);transition:color .3s}
+        .kw-link:hover{color:#fff}
+        .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+        .btn{
+            display:inline-flex;align-items:center;gap:10px;
+            padding:14px 30px;border-radius:12px;font-weight:800;font-size:1rem;
+            transition:transform .3s,box-shadow .3s,background .3s;cursor:pointer;border:none;
         }
-        
-        /* دکمه‌ها */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #fd6f14;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        .btn-primary{background:linear-gradient(135deg,var(--accent),#e85d04);color:#fff;box-shadow:0 10px 26px rgba(253,111,20,.35)}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(253,111,20,.45)}
+        .btn-ghost{background:transparent;border:2px solid rgba(253,111,20,.6);color:var(--accent-2)}
+        .btn-ghost:hover{background:var(--accent-soft);transform:translateY(-3px)}
+        .hero-trust{display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+        .hero-trust span{display:flex;align-items:center;gap:8px}
+        .hero-trust i{color:var(--accent)}
+
+        /* قاب تصویر */
+        .frame{
+            background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+            box-shadow:var(--shadow);overflow:hidden;position:relative;
         }
-        
-        .btn:hover {
-            background: #e65c10;
-            transform: translateY(-3px);
+        .frame-bar{display:flex;gap:7px;padding:13px 16px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+        .frame-bar i{width:11px;height:11px;border-radius:50%;display:block}
+        .frame-bar i:nth-child(1){background:#ff5f57}
+        .frame-bar i:nth-child(2){background:#febc2e}
+        .frame-bar i:nth-child(3){background:#28c840}
+        .frame img{width:100%;height:auto;object-fit:cover}
+        .hero .frame{transform:rotate(-1deg);transition:transform .5s}
+        .hero .frame:hover{transform:rotate(0)}
+        .glow{position:absolute;inset:auto -40px -40px auto;width:220px;height:220px;background:radial-gradient(circle,rgba(253,111,20,.35),transparent 70%);filter:blur(10px);pointer-events:none}
+
+        /* ========== آمار ========== */
+        .stats{background:var(--bg-2);border-block:1px solid var(--line);padding:44px 0}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+        .stat b{display:block;font-size:2rem;font-weight:900;color:var(--accent-2)}
+        .stat span{color:var(--muted);font-size:.92rem}
+
+        /* ========== عنوان بخش‌ها ========== */
+        .sec-head{text-align:center;max-width:720px;margin:0 auto 56px}
+        .overline{color:var(--accent);font-weight:800;font-size:.85rem;letter-spacing:2px;text-transform:uppercase}
+        .sec-head h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;margin:10px 0 14px}
+        .sec-head p{color:var(--muted)}
+
+        /* ========== ویژگی‌ها ========== */
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+        .card{
+            background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+            padding:30px 26px;transition:transform .35s,border-color .35s,box-shadow .35s;position:relative;overflow:hidden;
         }
-        
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid #fd6f14;
+        .card::before{content:"";position:absolute;top:0;right:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .35s}
+        .card:hover{transform:translateY(-8px);border-color:rgba(253,111,20,.4);box-shadow:var(--shadow)}
+        .card:hover::before{opacity:1}
+        .card .icon{
+            width:56px;height:56px;border-radius:14px;display:grid;place-items:center;
+            background:var(--accent-soft);color:var(--accent);font-size:1.4rem;margin-bottom:18px;
         }
-        
-        .btn-secondary:hover {
-            background: rgba(253, 111, 20, 0.1);
+        .card h3{font-size:1.1rem;margin-bottom:10px}
+        .card p{color:var(--muted);font-size:.94rem}
+
+        /* ========== اسکرین‌شات ========== */
+        #screenshot{background:var(--bg-2);border-block:1px solid var(--line)}
+        .shot-wrap{position:relative;max-width:960px;margin:0 auto}
+        .shot-wrap .frame{transform:none}
+        .shot-caption{text-align:center;color:var(--muted);margin-top:18px;font-size:.92rem}
+
+        /* ========== مراحل ========== */
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
+        .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;transition:transform .35s,border-color .35s}
+        .step:hover{transform:translateY(-6px);border-color:rgba(253,111,20,.4)}
+        .step .num{
+            position:absolute;top:-18px;right:24px;width:42px;height:42px;border-radius:12px;
+            background:linear-gradient(135deg,var(--accent),#e85d04);color:#fff;font-weight:900;
+            display:grid;place-items:center;font-size:1.1rem;box-shadow:0 8px 20px rgba(253,111,20,.4);
         }
-        
-        /* بخش‌های اصلی */
-        section {
-            padding: 60px 0;
-            background: white;
-            margin: 30px 0;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .step h3{margin:14px 0 8px;font-size:1.05rem}
+        .step p{color:var(--muted);font-size:.92rem}
+
+        /* ========== کاربردها / سئو ========== */
+        #uses{background:var(--bg-2);border-block:1px solid var(--line)}
+        .uses-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+        .uses-text p{color:var(--muted);margin-bottom:16px}
+        .uses-text strong{color:var(--text)}
+        .tag-cloud{display:flex;flex-wrap:wrap;gap:10px}
+        .tag{
+            background:var(--surface);border:1px solid var(--line);color:var(--muted);
+            padding:8px 16px;border-radius:50px;font-size:.85rem;font-weight:600;transition:all .3s;
         }
-        
-        section h2 {
-            text-align: center;
-            color: #2d3748;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            border-bottom: 3px solid #fd6f14;
-            padding-bottom: 15px;
-            display: inline-block;
+        .tag:hover{border-color:var(--accent);color:var(--accent-2);transform:translateY(-2px)}
+        a.tag{color:var(--accent-2);border-color:rgba(253,111,20,.4)}
+
+        /* ========== دانلود ========== */
+        .download-box{
+            background:linear-gradient(135deg,#1a222c,#141a22);
+            border:1px solid rgba(253,111,20,.3);border-radius:24px;
+            padding:52px 40px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden;
         }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
+        .download-box::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 200px at 50% 0,rgba(253,111,20,.15),transparent 70%)}
+        .download-box h2{font-size:1.8rem;font-weight:900;margin-bottom:12px;position:relative}
+        .download-box p{color:var(--muted);max-width:600px;margin:0 auto 28px;position:relative}
+        .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:34px;position:relative}
+        .spec{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:16px}
+        .spec i{color:var(--accent);font-size:1.3rem;margin-bottom:8px}
+        .spec b{display:block;font-size:.95rem}
+        .spec span{color:var(--muted);font-size:.85rem}
+
+        /* ========== فوتر ========== */
+        footer{background:#0a0e13;border-top:1px solid var(--line);padding:60px 0 24px}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:36px;margin-bottom:40px}
+        .footer-grid h3{color:var(--accent-2);font-size:1.05rem;margin-bottom:16px}
+        .footer-grid p,.footer-grid a{color:var(--muted);font-size:.92rem}
+        .footer-grid a{display:block;margin:8px 0;transition:color .3s}
+        .footer-grid a:hover{color:var(--accent-2)}
+        .socials{display:flex;gap:12px;margin-top:16px}
+        .socials a{width:40px;height:40px;border-radius:10px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);transition:all .3s;margin:0}
+        .socials a:hover{background:var(--accent);color:#fff;transform:translateY(-3px)}
+        .copyright{text-align:center;border-top:1px solid var(--line);padding-top:22px;color:var(--muted);font-size:.88rem}
+        .copyright a{color:var(--accent-2);font-weight:700}
+
+        /* ========== انیمیشن ظهور ========== */
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+        .reveal.visible{opacity:1;transform:none}
+
+        /* ========== رسپانسیو ========== */
+        @media (max-width:992px){
+            .hero-grid{grid-template-columns:1fr;gap:44px}
+            .hero .frame{transform:none}
+            .steps{grid-template-columns:repeat(2,1fr)}
+            .uses-grid{grid-template-columns:1fr}
+            .stats-grid{grid-template-columns:repeat(2,1fr)}
         }
-        
-        /* ویژگی‌ها */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .feature {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            border-left: 4px solid #fd6f14;
-        }
-        
-        .feature i {
-            font-size: 2.5rem;
-            color: #fd6f14;
-            margin-bottom: 15px;
-        }
-        
-        /* گالری */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .gallery-item {
-            background: #f8f9fa;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .gallery-caption {
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        /* دانلود */
-        .download-box {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .download-info {
-            background: white;
-            color: #333;
-            padding: 25px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: right;
-        }
-        
-        .download-info ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-        
-        .download-info li {
-            margin: 10px 0;
-            padding-right: 25px;
-            position: relative;
-        }
-        
-        .download-info li:before {
-            content: "✓";
-            color: #fd6f14;
-            position: absolute;
-            right: 0;
-            font-weight: bold;
-        }
-        
-        /* فوتر */
-        footer {
-            background: #2d3748;
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 50px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-section h3 {
-            color: #fd6f14;
-            margin-bottom: 20px;
-        }
-        
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin: 8px 0;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: #fd6f14;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #4a5568;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-        
-        /* رسپانسیو */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+        @media (max-width:768px){
+            .menu-btn{display:block}
+            .nav-links{
+                position:absolute;top:70px;right:0;left:0;flex-direction:column;gap:0;
+                background:rgba(13,17,23,.97);backdrop-filter:blur(14px);
+                border-bottom:1px solid var(--line);
+                max-height:0;overflow:hidden;transition:max-height .4s ease;
             }
-            
-            .features, .gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .btn {
-                display: block;
-                margin: 10px auto;
-                max-width: 300px;
-            }
+            .nav-links.open{max-height:420px}
+            .nav-links li{width:100%;text-align:center}
+            .nav-links a{display:block;padding:15px 0}
+            .nav-links a::after{display:none}
+            .nav-cta{margin:12px auto;display:inline-block}
+            section{padding:64px 0}
+            .steps{grid-template-columns:1fr}
+            .download-box{padding:40px 22px}
+        }
+        @media (max-width:480px){
+            .stats-grid{grid-template-columns:1fr 1fr;gap:16px}
+            .hero{padding-top:140px}
+            .hero-btns .btn{width:100%;justify-content:center}
         }
     </style>
 </head>
 <body>
-    <!-- هدر -->
-    <header>
-        <div class="container">
-            <h1><i class="fas fa-video"></i> Image2Video Pro</h1>
-            <p>نرم‌افزار حرفه‌ای تبدیل تصاویر به ویدیو با رابط کاربری مدرن</p>
-            <p>نسخه جدید با طراحی تاریک و امکانات پیشرفته</p>
-            
-            <div style="margin-top: 30px;">
-                <a href="#download" class="btn">
-                    <i class="fas fa-download"></i> دانلود رایگان
-                </a>
-                <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" class="btn btn-secondary">
-                    <i class="fas fa-info-circle"></i> اطلاعات بیشتر
-                </a>
+
+    <!-- ========== ناوبری ========== -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo"><i class="fas fa-film"></i> Image2Video <span>Pro</span></a>
+            <button class="menu-btn" id="menuBtn" aria-label="منو"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">ویژگی‌ها</a></li>
+                <li><a href="#screenshot">تصویر برنامه</a></li>
+                <li><a href="#how">آموزش استفاده</a></li>
+                <li><a href="#uses">کاربردها</a></li>
+                <li><a href="#download">دانلود</a></li>
+                <li><a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener" class="nav-cta">خرید محصول</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== هیرو ========== -->
+    <header class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="reveal visible">
+                <span class="badge"><i class="fas fa-bolt"></i> نسخه Pro — موتور FFmpeg</span>
+                <h1>
+                    <a class="kw-link" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">نرم افزار تبدیل عکس به فیلم تایم لپس</a>
+                    با رابط مدرن و خروجی <span class="grad">خیره‌کننده</span>
+                </h1>
+                <p class="lead">
+                    Image2Video Pro یک <strong>نرم افزار تبدیل عکس به ویدیو</strong> قدرتمند است که برای
+                    <a class="kw-link" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">ساخت تایم لپس حرفه‌ای</a>،
+                    اسلایدشوهای سینمایی و پردازش تصاویر دوربین مداربسته طراحی شده است؛ کافی است تصاویر را انتخاب کنید و بقیه کار را به ما بسپارید.
+                </p>
+                <div class="hero-btns">
+                    <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> دانلود رایگان</a>
+                    <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fas fa-cart-shopping"></i> صفحه محصول</a>
+                </div>
+                <div class="hero-trust">
+                    <span><i class="fas fa-circle-check"></i> ویندوز ۱۰ و ۱۱</span>
+                    <span><i class="fas fa-circle-check"></i> پشتیبانی JPG, PNG, GIF, BMP, WEBP</span>
+                    <span><i class="fas fa-circle-check"></i> رابط فارسی و مدرن</span>
+                </div>
+            </div>
+            <div class="reveal visible" style="position:relative">
+                <div class="frame">
+                    <div class="frame-bar"><i></i><i></i><i></i></div>
+                    <img src="./image-to-timelapse-video.JPG" alt="رابط کاربری نرم افزار تبدیل عکس به فیلم تایم لپس Image2Video Pro" loading="eager">
+                </div>
+                <div class="glow"></div>
             </div>
         </div>
     </header>
 
-    <!-- ویژگی‌های جدید -->
-    <section class="container">
-        <div class="section-header">
-            <h2>ویژگی‌های نسخه جدید</h2>
+    <!-- ========== آمار ========== -->
+    <div class="stats">
+        <div class="container stats-grid">
+            <div class="stat reveal"><b>+۵</b><span>فرمت تصویر پشتیبانی‌شده</span></div>
+            <div class="stat reveal"><b>۲×</b><span>سرعت با سیستم کش دوگانه</span></div>
+            <div class="stat reveal"><b>۱00٪</b><span>کنترل روی تنظیمات خروجی</span></div>
+            <div class="stat reveal"><b>۲۴/۷</b><span>مناسب پردازش تصاویر مداربسته</span></div>
         </div>
-        
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-palette"></i>
-                <h3>رابط کاربری مدرن</h3>
-                <p>طراحی تاریک با رنگ‌بندی نارنجی و تجربه کاربری بهبود یافته</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-th-large"></i>
-                <h3>گالری تصاویر هوشمند</h3>
-                <p>نمایش تصاویر به صورت گالری با قابلیت انتخاب و مرتب‌سازی</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-tachometer-alt"></i>
-                <h3>سرعت پردازش بالا</h3>
-                <p>بهینه‌سازی عملکرد با سیستم کش دوگانه و پردازش موازی</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-sliders-h"></i>
-                <h3>تنظیمات کامل</h3>
-                <p>کنترل کامل بر مدت زمان فریم، FPS، اندازه و کیفیت خروجی</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-save"></i>
-                <h3>ذخیره خودکار</h3>
-                <p>ذخیره خودکار تنظیمات و لیست تصاویر انتخاب شده</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-chart-bar"></i>
-                <h3>نمایش پیشرفت زنده</h3>
-                <p>نمایش زمان واقعی پیشرفت عملیات و تایمر</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- گالری -->
-    <section class="container">
-        <div class="section-header">
-            <h2>گالری تصاویر</h2>
-            <p>نگاهی به رابط کاربری جدید و امکانات</p>
-        </div>
-        
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="screenshot.png" alt="رابط کاربری اصلی" onerror="this.src='https://placehold.co/600x400/2d3748/fd6f14?text=Image2Video+Pro'">
-                <div class="gallery-caption">رابط کاربری اصلی - طراحی تاریک مدرن</div>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/2d3748/ffffff?text=گالری+تصاویر" alt="گالری تصاویر">
-                <div class="gallery-caption">گالری تصاویر با قابلیت انتخاب</div>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/2d3748/ffffff?text=تنظیمات+ویدیو" alt="تنظیمات ویدیو">
-                <div class="gallery-caption">پنل تنظیمات کامل ویدیو</div>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="https://placehold.co/600x400/2d3748/ffffff?text=نمایش+پیشرفت" alt="نمایش پیشرفت">
-                <div class="gallery-caption">نمایش پیشرفت عملیات به صورت زنده</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- دانلود -->
-    <section id="download" class="container">
-        <div class="section-header">
-            <h2>دانلود رایگان</h2>
-            <p>نسخه کامل نرم‌افزار به صورت رایگان</p>
-        </div>
-        
-        <div class="download-box">
-            <h2 style="color: #fd6f14; margin-bottom: 20px;">Image2Video Pro</h2>
-            <p style="margin-bottom: 30px;">نرم‌افزار حرفه‌ای تبدیل تصاویر به ویدیو</p>
-            
-            <a href="https://github.com/IntellSoftAI/Image2Video/releases/latest" target="_blank" class="btn" style="background: #fd6f14; color: white;">
-                <i class="fas fa-download"></i> دانلود نسخه 2.0.0
-            </a>
-            
-            <div class="download-info">
-                <h3>مشخصات فنی:</h3>
-                <p><strong>حجم:</strong> 15 مگابایت</p>
-                <p><strong>سیستم عامل:</strong> ویندوز 10 و 11</p>
-                <p><strong>تاریخ انتشار:</strong> 2024</p>
-                
-                <h3 style="margin-top: 20px;">نیازمندی‌های سیستم:</h3>
-                <ul>
-                    <li>ویندوز ۱۰ یا ۱۱ (۶۴ بیت)</li>
-                    <li>حداقل ۴ گیگابایت RAM</li>
-                    <li>۲ گیگابایت فضای خالی</li>
-                    <li>FFmpeg نصب شده</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 30px; border-right: 4px solid #fd6f14;">
-            <h3><i class="fas fa-star" style="color: #fd6f14;"></i> برای نیازهای پیشرفته‌تر:</h3>
-            <p style="margin-top: 10px;">اگر به امکانات بیشتری مانند افزودن موسیقی، واترمارک، پردازش دسته‌ای و پشتیبانی فنی نیاز دارید، 
-               <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" style="color: #fd6f14; font-weight: bold;">نسخه کامل محصول</a> را بررسی کنید.</p>
-        </div>
-    </section>
-
-    <!-- فوتر -->
-    <footer>
+    <!-- ========== ویژگی‌ها ========== -->
+    <section id="features">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Image2Video Pro</h3>
-                    <p>نرم‌افزار حرفه‌ای تبدیل تصاویر به ویدیو با رابط کاربری مدرن و امکانات پیشرفته</p>
-                    <div style="margin-top: 20px;">
-                        <a href="https://github.com/IntellSoftAI/Image2Video" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="mailto:support@intellsoft.ir"><i class="fas fa-envelope"></i> ایمیل</a>
+            <div class="sec-head reveal">
+                <span class="overline">امکانات</span>
+                <h2>ویژگی‌های نسخه جدید</h2>
+                <p>همه‌چیز برای یک تجربه سریع، زیبا و حرفه‌ای در <strong>تولید ویدیو با FFmpeg</strong></p>
+            </div>
+            <div class="features-grid">
+                <div class="card reveal"><div class="icon"><i class="fas fa-palette"></i></div><h3>رابط کاربری مدرن</h3><p>طراحی تاریک با تم نارنجی، چشم‌نواز و بدون خستگی چشم در استفاده طولانی.</p></div>
+                <div class="card reveal"><div class="icon"><i class="fas fa-images"></i></div><h3>گالری تصاویر هوشمند</h3><p>مشاهده، انتخاب و مرتب‌سازی تصاویر با پیش‌نمایش سریع و صفحه‌بندی هوشمند.</p></div>
+                <div class="card reveal"><div class="icon"><i class="fas fa-gauge-high"></i></div><h3>سرعت پردازش بالا</h3><p>سیستم کش دوگانه و بهینه‌سازی حافظه برای پردازش هزاران تصویر بدون افت سرعت.</p></div>
+                <div class="card reveal"><div class="icon"><i class="fas fa-sliders"></i></div><h3>تنظیمات کامل خروجی</h3><p>کنترل مدت زمان هر فریم، نرخ فریم، اندازه تصاویر و تعداد ستون‌های گالری.</p></div>
+                <div class="card reveal"><div class="icon"><i class="fas fa-floppy-disk"></i></div><h3>ذخیره خودکار</h3><p>تنظیمات و لیست تصاویر انتخاب‌شده به‌صورت خودکار برای استفاده بعدی ذخیره می‌شوند.</p></div>
+                <div class="card reveal"><div class="icon"><i class="fas fa-stopwatch"></i></div><h3>پیشرفت زنده</h3><p>نمایش زمان واقعی پیشرفت عملیات همراه با امکان توقف در هر مرحله.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== تصویر برنامه ========== -->
+    <section id="screenshot">
+        <div class="container">
+            <div class="sec-head reveal">
+                <span class="overline">پیش‌نمایش</span>
+                <h2>نگاهی به محیط برنامه</h2>
+                <p>رابط کاربری تاریک و مدرن Image2Video Pro در یک نگاه</p>
+            </div>
+            <div class="shot-wrap reveal">
+                <div class="frame">
+                    <div class="frame-bar"><i></i><i></i><i></i></div>
+                    <img src="./image-to-timelapse-video.JPG" alt="تصویر محیط نرم افزار ساخت ویدیو تایم لپس Image2Video Pro" loading="lazy">
+                </div>
+                <p class="shot-caption">محیط اصلی برنامه — گالری تصاویر، تنظیمات ویدیو و نوار پیشرفت عملیات</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== مراحل استفاده ========== -->
+    <section id="how">
+        <div class="container">
+            <div class="sec-head reveal">
+                <span class="overline">آموزش</span>
+                <h2>ساخت ویدیو در ۶ گام ساده</h2>
+                <p>از انتخاب تصاویر تا دریافت ویدیوی نهایی، تنها چند کلیک فاصله دارید</p>
+            </div>
+            <div class="steps">
+                <div class="step reveal"><span class="num">۱</span><h3>انتخاب پوشه تصاویر</h3><p>پوشه موردنظر را از بخش تنظیمات انتخاب کنید تا تصاویر به‌صورت خودکار اسکن شوند.</p></div>
+                <div class="step reveal"><span class="num">۲</span><h3>مشاهده در گالری</h3><p>تصاویر با پیش‌نمایش سریع در گالری نمایش داده می‌شوند؛ اندازه و ستون‌ها قابل تنظیم‌اند.</p></div>
+                <div class="step reveal"><span class="num">۳</span><h3>انتخاب تصاویر</h3><p>با چک‌باکس‌ها تصاویر دلخواه را انتخاب کنید یا از «انتخاب همه» استفاده کنید.</p></div>
+                <div class="step reveal"><span class="num">۴</span><h3>تنظیم فریم‌ها</h3><p>مدت زمان نمایش هر فریم و نرخ فریم خروجی را مطابق سلیقه خود تنظیم کنید.</p></div>
+                <div class="step reveal"><span class="num">۵</span><h3>شروع تولید ویدیو</h3><p>دکمه تولید را بزنید و پیشرفت عملیات را به‌صورت زنده دنبال کنید.</p></div>
+                <div class="step reveal"><span class="num">۶</span><h3>دریافت خروجی 🎉</h3><p>ویدیوی نهایی در پوشه مشخص‌شده ذخیره می‌شود؛ آماده انتشار و اشتراک‌گذاری!</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== کاربردها و کلمات کلیدی ========== -->
+    <section id="uses">
+        <div class="container">
+            <div class="sec-head reveal">
+                <span class="overline">کاربردها</span>
+                <h2>برای چه کارهایی ساخته شده است؟</h2>
+            </div>
+            <div class="uses-grid">
+                <div class="uses-text reveal">
+                    <p>
+                        Image2Video Pro فراتر از یک <strong>نرم افزار ساخت ویدیو تایم لپس</strong> ساده است؛ این ابزار برای
+                        <a class="kw-link" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">ساخت اسلایدشو با کیفیت بالا</a>
+                        از آلبوم‌های خانوادگی، پروژه‌های عمرانی و مستندسازی رشد گیاهان ایده‌آل است.
+                    </p>
+                    <p>
+                        یکی از کاربردهای ویژه، <strong>تبدیل تصاویر دوربین مداربسته به ویدیو</strong> است؛ هزاران فریم ثبت‌شده را در چند دقیقه به یک ویدیوی قابل‌بازبینی تبدیل کنید.
+                        همچنین امکان <strong>تبدیل مجموعه تصاویر به ویدیو</strong> برای عکاسان و طراحان، خروجی گرفتن از دنباله‌های تصویری را بسیار ساده کرده است.
+                    </p>
+                    <p>
+                        به‌عنوان یک <strong>نرم افزار تایم لپس ویندوز</strong>، این برنامه با ویندوز ۱۰ و ۱۱ سازگار است و اگر به دنبال یک
+                        <a class="kw-link" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">نرم افزار رایگان تبدیل عکس به فیلم</a>
+                        با امکانات حرفه‌ای هستید، Image2Video Pro انتخاب درست شماست.
+                    </p>
+                </div>
+                <div class="reveal">
+                    <h3 style="margin-bottom:16px;color:var(--accent-2)"><i class="fas fa-tags"></i> کلیدواژه‌های این صفحه</h3>
+                    <div class="tag-cloud">
+                        <a class="tag" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">نرم افزار تبدیل عکس به فیلم تایم لپس</a>
+                        <a class="tag" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">ساخت تایم لپس حرفه‌ای</a>
+                        <span class="tag">نرم افزار تبدیل عکس به ویدیو</span>
+                        <a class="tag" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">ساخت اسلایدشو با کیفیت بالا</a>
+                        <span class="tag">تبدیل تصاویر دوربین مداربسته به ویدیو</span>
+                        <span class="tag">تولید ویدیو با FFmpeg</span>
+                        <a class="tag" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">نرم افزار ساخت ویدیو تایم لپس</a>
+                        <span class="tag">تبدیل مجموعه تصاویر به ویدیو</span>
+                        <span class="tag">نرم افزار تایم لپس ویندوز</span>
+                        <a class="tag" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">نرم افزار رایگان تبدیل عکس به فیلم</a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>لینک‌های مفید</h3>
-                    <a href="#features">ویژگی‌ها</a>
-                    <a href="#gallery">گالری</a>
-                    <a href="#download">دانلود</a>
-                    <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank">صفحه محصول</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>تماس با ما</h3>
-                    <p>توسعه‌دهنده: محمدعلی عباس‌پور</p>
-                    <p>ایمیل: support@intellsoft.ir</p>
-                    <p>وبسایت: intellsoft.ir</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== دانلود ========== -->
+    <section id="download">
+        <div class="container">
+            <div class="download-box reveal">
+                <h2><i class="fas fa-cloud-arrow-down" style="color:var(--accent)"></i> دانلود Image2Video Pro</h2>
+                <p>
+                    همین حالا آخرین نسخه را دریافت کنید و اولین تایم‌لپس خود را بسازید.
+                    برای امکانات پیشرفته‌تر و پشتیبانی، <a class="kw-link" href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">صفحه محصول</a> را ببینید.
+                </p>
+                <a href="https://github.com/IntellSoftAI/Image2Video/releases" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> دانلود از گیت‌هاب</a>
+                <div class="specs">
+                    <div class="spec"><i class="fas fa-hard-drive"></i><b>حجم تقریبی</b><span>۱۵ مگابایت</span></div>
+                    <div class="spec"><i class="fab fa-windows"></i><b>سیستم عامل</b><span>ویندوز ۱۰ و ۱۱ (۶۴ بیت)</span></div>
+                    <div class="spec"><i class="fas fa-memory"></i><b>حافظه مورد نیاز</b><span>حداقل ۴ گیگابایت RAM</span></div>
+                    <div class="spec"><i class="fas fa-gears"></i><b>پیش‌نیاز</b><span>نصب FFmpeg</span></div>
                 </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- ========== فوتر ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3><i class="fas fa-film"></i> Image2Video Pro</h3>
+                    <p>نرم افزار تبدیل عکس به فیلم تایم لپس با رابط مدرن، سرعت بالا و خروجی باکیفیت برای ویندوز.</p>
+                    <div class="socials">
+                        <a href="https://github.com/IntellSoftAI/Image2Video" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://intellsoft.ir" target="_blank" rel="noopener" aria-label="وب‌سایت"><i class="fas fa-globe"></i></a>
+                        <a href="mailto:support@intellsoft.ir" aria-label="ایمیل"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>دسترسی سریع</h3>
+                    <a href="#features">ویژگی‌ها</a>
+                    <a href="#screenshot">تصویر برنامه</a>
+                    <a href="#how">آموزش استفاده</a>
+                    <a href="#download">دانلود</a>
+                </div>
+                <div>
+                    <h3>محصول</h3>
+                    <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">صفحه محصول و خرید</a>
+                    <a href="https://github.com/IntellSoftAI/Image2Video/releases" target="_blank" rel="noopener">آخرین انتشارها</a>
+                    <a href="https://intellsoft.ir" target="_blank" rel="noopener">وب‌سایت اینتل‌سافت</a>
+                </div>
+                <div>
+                    <h3>توسعه‌دهنده</h3>
+                    <p>محمدعلی عباس‌پور</p>
+                    <p>support@intellsoft.ir</p>
+                    <p>intellsoft.ir</p>
+                </div>
+            </div>
             <div class="copyright">
-                <p>© 2024 توسعه‌یافته توسط محمدعلی عباس‌پور. تمامی حقوق محفوظ است.</p>
-                <p style="margin-top: 10px;">برای خرید نسخه کامل با امکانات پیشرفته‌تر، 
-                   <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" style="color: #fd6f14; font-weight: bold;">اینجا کلیک کنید</a>.</p>
+                <p>© تمامی حقوق محفوظ است — توسعه‌یافته با ❤️ توسط محمدعلی عباس‌پور |
+                    <a href="https://intellsoft.ir/product/time-lapse-photo-to-video/" target="_blank" rel="noopener">نرم افزار تبدیل عکس به فیلم تایم لپس</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // اسکرول نرم برای لینک‌ها
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 20,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        // منوی موبایل
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
         });
-        
-        // جایگزینی عکس‌های خراب
-        document.querySelectorAll('img').forEach(img => {
-            img.onerror = function() {
-                this.src = 'https://placehold.co/600x400/2d3748/fd6f14?text=Image2Video+Pro';
-            };
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.add('fa-bars'); icon.classList.remove('fa-xmark');
+        }));
+
+        // انیمیشن ظهور هنگام اسکرول
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: .12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // جایگزینی تصویر در صورت نبود فایل
+        document.querySelectorAll('img[src="./image-to-timelapse-video.JPG"]').forEach(img => {
+            img.addEventListener('error', () => {
+                img.src = 'https://placehold.co/1200x700/161d26/fd6f14?text=Image2Video+Pro';
+            }, { once: true });
         });
     </script>
 </body>
